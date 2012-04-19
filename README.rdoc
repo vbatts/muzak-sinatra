@@ -1,0 +1,7 @@
+== About
+
+This is intended to be a simple tomcat app, running 
+sinatra, that displays audio information on a given 
+library.
+
+

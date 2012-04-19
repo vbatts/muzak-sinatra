@@ -8,13 +8,14 @@ Warbler::Config.new do |config|
   # - gemjar: package the gem repository in a jar file in WEB-INF/lib
   # - executable: embed a web server and make the war executable
   # - compiled: compile .rb files to .class files
-  # config.features = %w(gemjar)
+  config.features = %w(executable gemjar compiled)
 
   # Application directories to be included in the webapp.
   config.dirs = %w(app config lib log vendor tmp)
 
   # Additional files/directories to include, above those in config.dirs
   # config.includes = FileList["db"]
+  config.includes = FileList["init.rb"]
 
   # Additional files/directories to exclude
   # config.excludes = FileList["lib/tasks/*"]
@@ -50,10 +51,11 @@ Warbler::Config.new do |config|
   # For Rails applications, the Rails gems are included by default
   # unless the vendor/rails directory is present.
   # config.gems += ["activerecord-jdbcmysql-adapter", "jruby-openssl"]
+  config.gems += ["sinatra","audioinfo"]
   # config.gems << "tzinfo"
 
   # Uncomment this if you don't want to package rails gem.
-  # config.gems -= ["rails"]
+  config.gems -= ["rails"]
 
   # The most recent versions of gems are used.
   # You can specify versions of gems by using a hash assignment:
@@ -116,7 +118,7 @@ Warbler::Config.new do |config|
   # config.webxml.booter = :rails
 
   # Set JRuby to run in 1.9 mode.
-  # config.webxml.jruby.compat.version = "1.9"
+  config.webxml.jruby.compat.version = "1.9"
 
   # When using the :rack booter, "Rackup" script to use.
   # - For 'rackup.path', the value points to the location of the rackup
