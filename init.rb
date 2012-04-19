@@ -6,16 +6,15 @@ require 'rubygems'
 require 'sinatra'
 
 @root = File.expand_path(File.dirname(__FILE__))
-@config = if FileTest.file? File.join(@root,'config','settings.yml')
-            YAML.load(File.join(@root,'config','settings.yml'))
-          else
-            {:music_dir => '/dev/null'}
-          end
-
 
 configure do
 	set :views, File.join(@root,'app','views')
-        set :music_dir, config[:music_dir]
+        set :app_settings, if FileTest.file? File.join(@root,'config','settings.yml')
+            YAML.load(File.read(File.join(@root,'config','settings.yml')))
+          else
+            {:music_dir => nil }
+          end
+
 end
 
 not_found do

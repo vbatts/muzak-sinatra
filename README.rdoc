@@ -4,4 +4,20 @@ This is intended to be a simple tomcat app, running
 sinatra, that displays audio information on a given 
 library.
 
+== Running
+
+# this part requires bundler
+$> bundle install
+
+Either:
+
+$> ruby init.rb
+and browser to http://localhost:4567/
+
+OR
+
+# this part requires warbler
+$> warble && sudo cp muzak.war /var/lib/tomcat/webapps/muzak.war && sudo chown tomcat:tomcat /var/lib/tomcat/webapps/muzak.war
+and browser to http://localhost:8080/muzak/
+
 
